@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+    <children>
+        <AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="728.0" prefWidth="826.0">
+            <children>
+                <JFXDatePicker fx:id="dateStart" layoutX="120.0" layoutY="29.0" />
+                <JFXDatePicker fx:id="dateEnd" layoutX="120.0" layoutY="72.0" />
+                <Label layoutX="69.0" layoutY="35.0" text="Start" />
+                <Label layoutX="69.0" layoutY="78.0" text="End" />
+
+                <JFXSlider fx:id="scrollBar" blockIncrement="0.1" layoutX="455.0" layoutY="35.0" max="8" min="1"
+                           onMouseClicked="#dragDetected" onMouseDragged="#dragDetected" onMousePressed="#dragDetected"
+                           onMouseReleased="#dragDetected" prefHeight="24.0" prefWidth="275.0" />
+                <Label fx:id="magnitude" layoutX="775.0" layoutY="35.0" prefHeight="16.0" prefWidth="28.0" />
+                <Label layoutX="358.0" layoutY="35.0" text="Magnitude" />
+
+                <JFXComboBox fx:id="comboBox" layoutX="455.0" layoutY="72.0" prefHeight="27.0" prefWidth="275.0" />
+                <Label layoutX="370.0" layoutY="78.0" prefHeight="15.0" prefWidth="43.0" text="Region" />
+                <JFXButton fx:id="search" layoutX="766.0" layoutY="72.0" mnemonicParsing="false" onMouseClicked="#updateData" text="Search" />
+                <JFXTabPane layoutY="120.0" prefHeight="608.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab text="Data">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="608.0" prefWidth="900.0">
+                                    <children>
+                                        <TableView fx:id="tableView" layoutY="-1.0" prefHeight="581.0" prefWidth="900.0">
+                                            <columns>
+                                                <TableColumn fx:id="columnF1" maxWidth="5000.0" minWidth="10.0" prefWidth="73.66665649414062" text="ID" />
+                                                <TableColumn fx:id="columnF2" maxWidth="5000.0" minWidth="10.0" prefWidth="162.6666259765625" text="UTC Date" />
+                                                <TableColumn fx:id="columnF3" maxWidth="5000.0" minWidth="10.0" prefWidth="73.3333740234375" text="Latitude" />
+                                                <TableColumn fx:id="columnF4" maxWidth="5000.0" minWidth="10.0" prefWidth="82.33331298828125" text="Longitude" />
+                                                <TableColumn fx:id="columnF5" maxWidth="5000.0" minWidth="10.0" prefWidth="49.6666259765625" text="Depth" />
+                                                <TableColumn fx:id="columnF6" maxWidth="5000.0" minWidth="10.0" prefWidth="72.33331298828125" text="Magnitude" />
+                                                <TableColumn fx:id="columnF7" maxWidth="5000.0" minWidth="10.0" prefWidth="300.0" text="Region" />
+                                                <TableColumn fx:id="columnF8" maxWidth="5000.0" minWidth="10.0" prefWidth="64.0" text="Area ID" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Map">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="475.0" prefWidth="806.0">
+                                    <children>
+                                        <StackPane fx:id="pane" alignment="TOP_LEFT" prefHeight="209.0" prefWidth="715.0" />
+                                        <Canvas fx:id="canvas" height="200.0" width="200.0" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Pie Chart">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="475.0" prefWidth="806.0">
+                                    <children>
+                                        <StackPane prefHeight="579.0" prefWidth="900.0">
+                                            <children>
+                                                <PieChart fx:id="pieChart" prefHeight="578.0" prefWidth="843.0" />
+                                            </children>
+                                        </StackPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Bar Chart">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <StackPane prefHeight="578.0" prefWidth="900.0">
+                                            <children>
+                                                <BarChart fx:id="barChart" prefHeight="411.0" prefWidth="599.0">
+                                                    <xAxis>
+                                                        <CategoryAxis side="BOTTOM" />
+                                                    </xAxis>
+                                                    <yAxis>
+                                                        <NumberAxis side="LEFT" />
+                                                    </yAxis>
+                                                </BarChart>
+                                            </children>
+                                        </StackPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </JFXTabPane>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

@@ -1,0 +1,39 @@
+The main programs are EarthQuakes1.java and EarthQuakes2.java.
+They are strictly identical, the only difference is that EarthQuakes1
+calls DataLoader1 and EarthQuakes2 calls DataLoader2.
+DataLoader1 reads again from the .csv file into memory for every new search,
+filtering as it loads.
+DataLoader2 loads once everything into a memory collection, and then uses
+streaming for filtering that collection.
+Both solutions are perfectly acceptable to me. I expect some students at least
+to experiment with streaming. However, the logic of DataLoader1 is actually
+closer to what will happen with JDBC (... where filtering will be done in 
+SQL), therefore I thought it might be good to have.
+
+The first labs should focus on the selection of quakes, and on the data table
+view. You can refer students to my flight search application (in course notes)
+as a possible layout. They have TableView examples in the samples I have
+uploaded in Sakai (barchart example as well). I have used tabs, it's not
+impossible to make what is expected of them fit in a single Window.
+I'd really like them to use their imagination rather than follow too closely
+specific guideline.
+
+Other than search + data view, what is expected from students is EITHER one
+map, or two charts.
+I have supplied both (in fact, I have even supplied two maps) in the code here.
+The Mercator projection is relatively easy to code for somebody who doesn't
+fear trigonometry. Formulas can be found on Wikipedia. The most difficult is
+finding the right image, when you search on "World Map" you don't always get
+the name of the projection used (and there are many different projections).
+Additionally, Pacific-centered world maps (which, irrespective of the more
+central position of China, look more interesting to me for this project,
+because of the famous Pacific "ring of fire") are less easy to find than those
+with the Greenwich meridian right in the middle.
+The other projection in my code is far more challenging (I based my code on a 
+research paper I found on the Internet). For the record, the original map I
+found was far duller than this one, which I have heavily modified with Gimp.
+
+I have noticed a problem with the X axis label of one of the charts when data
+is refreshed (new search). I have no idea whether is a wrong setting in my code
+or a Javafx problem (possibly linked to the operating system). If students have
+the same problem, they don't need to worry.
